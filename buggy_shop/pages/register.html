@@ -1,0 +1,23 @@
+<form id="register-form" class="card form narrow" novalidate>
+  <h1>Create an account</h1>
+  <div class="field">
+    <label for="r-name">Full name</label>
+    <input id="r-name" autocomplete="name">
+  </div>
+  <div class="field">
+    <label for="r-email">Email</label>
+    <input id="r-email" type="email" autocomplete="email">
+  </div>
+  <div class="field">
+    <label for="r-password">Password</label>
+    <input id="r-password" type="password" autocomplete="new-password" aria-describedby="r-hint">
+    <p id="r-hint" class="hint">At least 8 characters.</p>
+  </div>
+  <div class="field">
+    <label for="r-confirm">Confirm password</label>
+    <input id="r-confirm" type="password" autocomplete="new-password">
+  </div>
+  <button type="submit" class="btn btn-block">Create account</button>
+  <p id="register-msg" class="msg error" role="alert"></p>
+  <p>Already have an account? <a href="/login">Log in</a></p>
+</form>

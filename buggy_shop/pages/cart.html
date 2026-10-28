@@ -1,0 +1,28 @@
+<h1>Your cart</h1>
+<div id="cart-empty" class="card empty" hidden>
+  <p>Your cart is empty.</p>
+  <a class="btn" href="/shop">Start shopping</a>
+</div>
+<div id="cart" class="cart-layout" hidden>
+  <div class="cart-items">
+    <div class="cart-head" aria-hidden="true">
+      <span>Product</span><span>Price</span><span>Quantity</span><span>Total</span><span></span>
+    </div>
+    <div id="cart-rows"></div>
+    <p id="cart-msg" class="msg error" role="alert"></p>
+  </div>
+  <aside class="card summary">
+    <h2>Order summary</h2>
+    <dl id="cart-summary" class="totals"></dl>
+    <form id="coupon-form" class="coupon" novalidate>
+      <label for="coupon">Coupon code</label>
+      <div class="row">
+        <input id="coupon" type="text" autocomplete="off">
+        <button type="submit" class="btn btn-ghost">Apply</button>
+      </div>
+      <p id="coupon-msg" class="msg" role="status"></p>
+    </form>
+    <a id="to-checkout" class="btn btn-block" href="/checkout">Proceed to checkout</a>
+    <a class="text-link" href="/shop">Continue shopping</a>
+  </aside>
+</div>

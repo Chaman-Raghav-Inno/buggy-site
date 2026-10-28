@@ -1,0 +1,15 @@
+<h1>Track your order</h1>
+<form id="track-form" class="card form narrow" novalidate>
+  <p class="muted">Enter the order number from your confirmation and the email you used at checkout.</p>
+  <div class="field">
+    <label for="t-order">Order number</label>
+    <input id="t-order" name="order" placeholder="e.g. LG-10042" autocomplete="off">
+  </div>
+  <div class="field">
+    <label for="t-email">Email address</label>
+    <input id="t-email" name="email" type="email" autocomplete="email">
+  </div>
+  <button type="submit" class="btn">Track order</button>
+  <p id="track-msg" class="msg error" role="alert"></p>
+</form>
+<div id="track-result" class="card narrow" hidden></div>
