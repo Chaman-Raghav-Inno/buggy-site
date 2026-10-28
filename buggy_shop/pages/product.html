@@ -1,0 +1,53 @@
+<p id="product-missing" class="msg error" hidden>Sorry, we couldn't find that product. <a href="/shop">Back to the shop</a></p>
+<article id="product" class="product" hidden>
+  <img id="p-image" class="product-image" src="data:," alt="" width="480" height="360">
+  <div class="product-info">
+    <p class="crumbs"><a href="/shop">Shop</a> / <span id="p-category"></span></p>
+    <h1 id="p-name"></h1>
+    <p id="p-rating" class="rating"></p>
+    <p id="p-price" class="price big"></p>
+    <p id="p-stock" class="stock"></p>
+    <p id="p-description"></p>
+    <div class="buy">
+      <div class="qty" role="group" aria-label="Quantity">
+        <button type="button" id="qty-minus" aria-label="Decrease quantity">−</button>
+        <input id="qty" type="number" value="1" min="1" aria-label="Quantity">
+        <button type="button" id="qty-plus" aria-label="Increase quantity">+</button>
+      </div>
+      <button type="button" id="add-to-cart" class="btn">Add to cart</button>
+    </div>
+    <p id="add-msg" class="msg" role="status"></p>
+  </div>
+</article>
+<section id="reviews" class="section" hidden>
+  <h2>Customer reviews</h2>
+  <ul id="review-list" class="reviews"></ul>
+  <form id="review-form" class="card form" novalidate>
+    <h3>Write a review</h3>
+    <div class="field">
+      <label for="review-name">Your name</label>
+      <input id="review-name" type="text" maxlength="60" autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="review-rating">Rating</label>
+      <select id="review-rating">
+        <option value="5">5 stars – Excellent</option>
+        <option value="4">4 stars – Good</option>
+        <option value="3">3 stars – Okay</option>
+        <option value="2">2 stars – Poor</option>
+        <option value="1">1 star – Terrible</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="review-text">Your review</label>
+      <textarea id="review-text" rows="4" maxlength="1000" aria-describedby="review-hint"></textarea>
+      <p id="review-hint" class="hint">At least 10 characters.</p>
+    </div>
+    <button class="btn" type="submit">Submit review</button>
+    <p id="review-msg" class="msg" role="status"></p>
+  </form>
+</section>
+<section id="related" class="section" hidden>
+  <h2>You may also like</h2>
+  <div id="related-grid" class="grid"></div>
+</section>

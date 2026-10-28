@@ -1,0 +1,23 @@
+<div class="section-head">
+  <h1>Your account</h1>
+  <button id="logout" type="button" class="btn btn-ghost">Log out</button>
+</div>
+<div class="account-layout">
+  <form id="profile-form" class="card form" novalidate>
+    <h2>Profile</h2>
+    <div class="field">
+      <label for="a-name">Full name</label>
+      <input id="a-name" autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="a-email">Email</label>
+      <input id="a-email" type="email" readonly>
+    </div>
+    <button type="submit" class="btn">Save changes</button>
+    <p id="profile-msg" class="msg" role="status"></p>
+  </form>
+  <section class="card">
+    <h2>Order history</h2>
+    <div id="order-history"></div>
+  </section>
+</div>

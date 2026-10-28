@@ -1,0 +1,34 @@
+<h1>Contact us</h1>
+<div class="contact-layout">
+  <form id="contact-form" class="card form" novalidate>
+    <div class="field">
+      <label for="c-name">Name</label>
+      <input id="c-name" autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="c-email">Email</label>
+      <input id="c-email" type="email" autocomplete="email">
+    </div>
+    <div class="field">
+      <label for="c-subject">Subject</label>
+      <select id="c-subject">
+        <option>Question about an order</option>
+        <option>Returns and refunds</option>
+        <option>Product question</option>
+        <option>Something else</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="c-message">Message</label>
+      <textarea id="c-message" rows="6" maxlength="500" aria-describedby="c-count"></textarea>
+      <p id="c-count" class="hint">0 / 500 characters</p>
+    </div>
+    <button type="submit" class="btn">Send message</button>
+    <p id="contact-msg" class="msg" role="status"></p>
+  </form>
+  <aside class="card">
+    <h2>Other ways to reach us</h2>
+    <p>Our team answers Monday to Friday, 9:00–17:00.</p>
+    <p>Most questions are answered in the <a href="/faq">FAQ</a>.</p>
+  </aside>
+</div>

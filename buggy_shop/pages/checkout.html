@@ -1,0 +1,59 @@
+<h1>Checkout</h1>
+<div class="checkout-layout">
+  <form id="checkout-form" class="card form" novalidate>
+    <h2>Shipping address</h2>
+    <div class="field">
+      <label for="f-name">Full name</label>
+      <input id="f-name" name="name" autocomplete="name">
+      <p class="field-error" id="e-name"></p>
+    </div>
+    <div class="field">
+      <label for="f-email">Email</label>
+      <input id="f-email" name="email" type="email" autocomplete="email">
+      <p class="field-error" id="e-email"></p>
+    </div>
+    <div class="field">
+      <label for="f-phone">Phone</label>
+      <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+      <p class="field-error" id="e-phone"></p>
+    </div>
+    <div class="field">
+      <label for="f-address">Street address</label>
+      <input id="f-address" name="address" autocomplete="street-address">
+      <p class="field-error" id="e-address"></p>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="f-city">City</label>
+        <input id="f-city" name="city" autocomplete="address-level2">
+        <p class="field-error" id="e-city"></p>
+      </div>
+      <div class="field">
+        <label for="f-zip">ZIP code</label>
+        <input id="f-zip" name="zip" inputmode="numeric" autocomplete="postal-code" maxlength="5">
+        <p class="field-error" id="e-zip"></p>
+      </div>
+    </div>
+    <div class="field">
+      <label for="f-country">Country</label>
+      <select id="f-country" name="country"><option value="US">United States</option></select>
+    </div>
+    <fieldset>
+      <legend>Shipping method</legend>
+      <label class="radio"><input type="radio" name="shipping" value="standard" checked> Standard (5–7 business days) · $5.00, free over $50</label>
+      <label class="radio"><input type="radio" name="shipping" value="express"> Express (1–2 business days) · $15.00</label>
+    </fieldset>
+    <fieldset>
+      <legend>Payment</legend>
+      <label class="radio"><input type="radio" name="payment" value="cod" checked> Cash on delivery</label>
+      <label class="radio"><input type="radio" name="payment" value="bank"> Bank transfer (details by email)</label>
+    </fieldset>
+    <button id="place-order" type="submit" class="btn btn-block">Place order</button>
+    <p id="checkout-msg" class="msg error" role="alert"></p>
+  </form>
+  <aside class="card summary">
+    <h2>Order summary</h2>
+    <ul id="checkout-items" class="mini-items"></ul>
+    <dl id="checkout-summary" class="totals"></dl>
+  </aside>
+</div>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="Lumen Goods sells lamps, linens, cookware, office and outdoor gear made to last.">
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/style.css">
+<script src="/static/app.js" defer></script>
+</head>
+<body data-page="{{page}}">
+<a class="skip" href="#main">Skip to content</a>
+<div class="promo">Free shipping on orders over $50 · Use code <strong>SAVE10</strong> for 10% off</div>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="logo" href="/">Lumen<span>Goods</span></a>
+    <form class="header-search" action="/shop" method="get" role="search">
+      <label class="sr-only" for="header-q">Search products</label>
+      <input id="header-q" name="q" type="search" placeholder="Search products">
+      <button type="submit" class="btn btn-small">Search</button>
+    </form>
+    <nav class="header-actions" aria-label="Account and cart">
+      {{account}}
+      <a class="cart-link" href="/cart">Cart <span id="cart-count" class="badge">{{cart_count}}</span></a>
+    </nav>
+  </div>
+  <nav class="wrap main-nav" aria-label="Main">
+    <a href="/">Home</a>
+    <a href="/shop">Shop</a>
+    <a href="/deals">Deals</a>
+    <a href="/track">Track order</a>
+    <a href="/faq">FAQ</a>
+    <a href="/contact">Contact</a>
+  </nav>
+</header>
+<main id="main" class="wrap">
+{{content}}
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="logo" href="/">Lumen<span>Goods</span></a>
+      <p>Everyday goods, thoughtfully made.</p>
+    </div>
+    <div>
+      <h2>Help</h2>
+      <ul>
+        <li><a href="/faq">Shipping info</a></li>
+        <li><a href="/returns">Returns &amp; refunds</a></li>
+        <li><a href="/track">Track your order</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Company</h2>
+      <ul>
+        <li><a href="/contact">Contact us</a></li>
+        <li><a href="/shop">Shop all</a></li>
+        <li><a href="/deals">Today's deals</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="wrap fine">© 2026 Lumen Goods. Demo store for QA testing: no real orders, payments or deliveries.</p>
+</footer>
+</body>
+</html>

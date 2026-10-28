@@ -1,0 +1,33 @@
+<h1>Shop all</h1>
+<div class="filters card">
+  <div class="field">
+    <label for="q">Search</label>
+    <input id="q" type="search" placeholder="Search by name">
+  </div>
+  <div class="field">
+    <label for="category">Category</label>
+    <select id="category">
+      <option value="all">All categories</option>
+      <option value="Home">Home</option>
+      <option value="Kitchen">Kitchen</option>
+      <option value="Office">Office</option>
+      <option value="Outdoor">Outdoor</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="sort">Sort by</label>
+    <select id="sort">
+      <option value="featured">Featured</option>
+      <option value="price-asc">Price: Low to High</option>
+      <option value="price-desc">Price: High to Low</option>
+      <option value="name">Name: A to Z</option>
+    </select>
+  </div>
+  <div class="field check">
+    <input id="in-stock" type="checkbox">
+    <label for="in-stock">In stock only</label>
+  </div>
+</div>
+<p id="result-count" class="muted" role="status"></p>
+<div id="product-grid" class="grid"></div>
+<nav id="pagination" class="pagination" aria-label="Pages"></nav>
