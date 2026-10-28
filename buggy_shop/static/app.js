@@ -9,6 +9,10 @@
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ENTITIES[c]);
   const params = new URLSearchParams(location.search);
 
+  document.addEventListener('submit', (e) => {
+    if (!e.target.matches('.header-search')) e.preventDefault();
+  }, true);
+
   async function api(path, body) {
     const opts = body === undefined
       ? { credentials: 'same-origin' }
@@ -57,10 +61,6 @@
   // Home
 
   async function homePage() {
-    const { data } = await api('/api/products');
-    const featured = [1, 5, 13, 16].map((id) => data.products.find((p) => p.id === id));
-    $('#featured').innerHTML = featured.map(productCard).join('');
-
     $('#newsletter-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const email = $('#newsletter-email').value.trim();
@@ -73,6 +73,10 @@
         say(msg, r.data.error || 'Something went wrong. Please try again.', 'error');
       }
     });
+
+    const { data } = await api('/api/products');
+    const featured = [1, 5, 13, 16].map((id) => data.products.find((p) => p.id === id));
+    $('#featured').innerHTML = featured.map(productCard).join('');
   }
 
   // Shop
@@ -334,31 +338,7 @@
   // Checkout
 
   async function checkoutPage() {
-    const [{ data }, me] = await Promise.all([api('/api/cart'), api('/api/me')]);
-    const cart = data.cart;
     const form = $('#checkout-form');
-    if (me.data.user) {
-      $('#f-name').value = me.data.user.name;
-      $('#f-email').value = me.data.user.email;
-    }
-
-    $('#checkout-items').innerHTML = cart.items.length
-      ? cart.items.map((i) => `<li><span>${i.qty} × ${esc(i.name)}</span><span>${money(i.line_total)}</span></li>`).join('')
-      : '<li>Your cart is empty.</li>';
-
-    function renderSummary() {
-      const method = $('input[name="shipping"]:checked').value;
-      const shipping = method === 'express' ? 15 : cart.shipping;
-      const total = cart.subtotal + shipping + cart.tax;
-      $('#checkout-summary').innerHTML = totalsList([
-        ['Subtotal', money(cart.subtotal)],
-        [`Shipping (${method === 'express' ? 'Express' : 'Standard'})`, shipping ? money(shipping) : 'Free'],
-        ['Tax (8%)', money(cart.tax)],
-        ['Total', money(total), 'grand'],
-      ]);
-    }
-    $$('input[name="shipping"]').forEach((r) => r.addEventListener('change', renderSummary));
-    renderSummary();
 
     function validate(values) {
       const errors = {};
@@ -398,6 +378,31 @@
       if (r.ok) location.href = `/order-confirmation?id=${r.data.order.id}`;
       else say($('#checkout-msg'), r.data.error || 'Could not place your order.', 'error');
     });
+
+    const [{ data }, me] = await Promise.all([api('/api/cart'), api('/api/me')]);
+    const cart = data.cart;
+    if (me.data.user) {
+      if (!$('#f-name').value) $('#f-name').value = me.data.user.name;
+      if (!$('#f-email').value) $('#f-email').value = me.data.user.email;
+    }
+
+    $('#checkout-items').innerHTML = cart.items.length
+      ? cart.items.map((i) => `<li><span>${i.qty} × ${esc(i.name)}</span><span>${money(i.line_total)}</span></li>`).join('')
+      : '<li>Your cart is empty.</li>';
+
+    function renderSummary() {
+      const method = $('input[name="shipping"]:checked').value;
+      const shipping = method === 'express' ? 15 : cart.shipping;
+      const total = cart.subtotal + shipping + cart.tax;
+      $('#checkout-summary').innerHTML = totalsList([
+        ['Subtotal', money(cart.subtotal)],
+        [`Shipping (${method === 'express' ? 'Express' : 'Standard'})`, shipping ? money(shipping) : 'Free'],
+        ['Tax (8%)', money(cart.tax)],
+        ['Total', money(total), 'grand'],
+      ]);
+    }
+    $$('input[name="shipping"]').forEach((r) => r.addEventListener('change', renderSummary));
+    renderSummary();
   }
 
   function orderTotals(o) {
@@ -495,14 +500,6 @@
   }
 
   async function accountPage() {
-    const me = await api('/api/me');
-    if (!me.data.user) {
-      location.href = '/login?next=/account';
-      return;
-    }
-    $('#a-name').value = me.data.user.name;
-    $('#a-email').value = me.data.user.email;
-
     $('#profile-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = $('#a-name').value.trim();
@@ -517,6 +514,14 @@
       await api('/api/logout', {});
       location.href = '/login';
     });
+
+    const me = await api('/api/me');
+    if (!me.data.user) {
+      location.href = '/login?next=/account';
+      return;
+    }
+    if (!$('#a-name').value) $('#a-name').value = me.data.user.name;
+    $('#a-email').value = me.data.user.email;
 
     const r = await api('/api/account/orders');
     const orders = (r.data && r.data.orders) || [];
